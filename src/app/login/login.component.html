@@ -1,0 +1,8 @@
+<div class="container">
+    <form class="login_form" [formGroup]="loginForm" (submit)="onSubmit()">
+        <input id="email_input" formControlName="email" placeholder="Введіть електронну пошту">
+        <input id="password_input" formControlName="password" placeholder="Введіть пароль">
+        <app-button [type]="'submit'" [text]="'Увійти'"></app-button>
+    </form>
+    <p>Ще немає аккаунту? <a href="#">Зареєструватись</a></p>
+</div>

@@ -1,0 +1,17 @@
+.navbar {
+    display: flex;
+    justify-content: end;
+}
+
+.navitem {
+    list-style: none;
+    font-size: 1.2rem;
+    color: var(--bgcolor);
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.navitem:hover {
+    color: var(--fontcolor);
+    background-color: var(--bgcolor);
+}

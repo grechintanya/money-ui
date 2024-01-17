@@ -1,0 +1,10 @@
+<div class="container">
+    <form class="register_form" [formGroup]="registerForm" (submit)="onSubmit()">
+        <input id="username_input" formControlName="username" placeholder="Введіть логін">
+        <input id="email_input" formControlName="email" placeholder="Введіть електронну пошту">
+        <input id="password1_input" formControlName="password1" placeholder="Введіть пароль">
+        <input id="password2_input" formControlName="password2" placeholder="Введіть пароль ще раз">
+        <app-button [type]="'submit'" [text]="'Зареєструватись'"></app-button>
+    </form>
+    <p>Вже маєте аккаунт? <a href="#">Увійти</a></p>
+</div>

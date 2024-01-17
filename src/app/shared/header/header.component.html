@@ -1,0 +1,8 @@
+<header>
+    <div class="container">
+        <div class="logo">MyMoney</div>
+        <div *ngIf="isAuth$ | async"><span>{{userName$ | async}}</span>
+            <app-button (click)="onLogoutButtonClicked()" [text]="'Вийти'"></app-button>
+        </div>
+    </div>
+</header>

@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Satisfy&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+body {
+    font-family: 'Roboto Condensed';
+    background-color: var(--secfontcolor);
+    color: var(--fontcolor);
+}
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+:root {
+    --bgcolor: rgb(87, 56, 32);
+    --fontcolor: rgba(204, 129, 68, 0.8);
+    --secfontcolor: rgba(247, 184, 132, 0.8);
+    --accentcolor: rgb(158, 85, 42);
+}

@@ -1,0 +1,23 @@
+button {
+    margin: 5px;
+    border: 2px solid var(--secfontcolor);
+    background-color: var(--secfontcolor);
+    border-radius: 5px;
+    padding: 2px 10px;
+    color: var(--bgcolor);
+    font-size: 0.9rem;
+}
+
+button:focus {
+    border: 2px solid var(--accentcolor);
+    ;
+    background-color: var(--accentcolor);
+    color: var(--secfontcolor);
+}
+
+button:hover {
+    border: 2px solid var(--accentcolor);
+    background-color: var(--accentcolor);
+    color: var(--secfontcolor);
+    transform: scale(1.1);
+}

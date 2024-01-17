@@ -1,0 +1,61 @@
+<div class="container">
+    <section id="accounts">
+        <div class="total">Баланс <span>{{totalBalance}}</span></div>
+        <div *ngFor="let account of accounts$ | async">
+            {{account.name}} <span>{{account.balance}}</span>
+        </div>
+        <app-button [text]="'Додати рахунок'" (click)="onAddAccountButtonClick()"></app-button>
+    </section>
+    <section id="add_ops">
+        <header>
+            <div class="tab-switch" [class.active-tab]="opType==='expense'" (click)="onExpenseClicked()">Витрата</div>
+            <div class="tab-switch" [class.active-tab]="opType==='transfer'" (click)="onTransferClicked()">Переказ</div>
+            <div class="tab-switch" [class.active-tab]="opType==='income'" (click)="onIncomeClicked()">Дохід</div>
+        </header>
+        <form [formGroup]="operationForm" class="add_op_form" (submit)="onOpFormSubmit()">
+            <div class="form-item">
+                <label for="account_select">{{opType === 'income' ? 'На рахунок' : 'З рахунку'}}</label>
+                <select id="account_select" formControlName="account">
+                    <option *ngFor="let account of accounts$ | async" value="account.name">{{account.name}}</option>
+                </select>
+            </div>
+            <div *ngIf="opType ==='income'" class="form-item">
+                <label for="category_select">Категорія</label>
+                <select id="category_select" formControlName="category">
+                    <option *ngFor="let category of incomeCategories$ | async" value="category._id">{{category.name}}
+                    </option>
+                </select>
+            </div>
+            <div *ngIf="opType ==='expense'" class="form-item">
+                <label for="category_select">Категорія</label>
+                <select id="category_select" formControlName="category">
+                    <option *ngFor="let category of expenseCategories$ | async" value="category._id">{{category.name}}
+                    </option>
+                </select>
+            </div>
+            <div *ngIf="opType==='transfer'" class="form-item">
+                <label for="account_select2">На рахунок</label>
+                <select id="account_select2" formControlName="account2">
+                    <option *ngFor="let account of accounts$ | async" value="account.name">{{account.name}}</option>
+                </select>
+            </div>
+            <input formControlName="amount" placeholder="Сума" id="amount_input">
+            <input type="date" formControlName="date" id="date_input">
+            <input formControlName="comment" placeholder="Примітка" id="comment_input">
+            <app-button [type]="'submit'" [text]="'Записати'"></app-button>
+        </form>
+    </section>
+    <section id="operations">
+        <h3>Останні операції</h3>
+        <div *ngFor="let op of operations">
+            <div class="operation">
+                <span class="date">{{op.date}}</span>
+                <span class="account">{{ (op.account | async)?.name }}</span>
+                <!--  <span class="arrow">{{op.type === 'income' : '&larr;' ? '&rarr;'}}</span> -->
+                <span class="account" *ngIf="op.category">{{(op.category | async)?.name }}</span>
+                <span class="account" *ngIf="op.recipientAccount">{{(op.recipientAccount | async)?.name }}</span>
+                <span class="amount">{{op.amount}}</span>
+            </div>
+        </div>
+    </section>
+</div>
